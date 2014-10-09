@@ -1,4 +1,4 @@
-class Api::BaseController < ApplicationController
+class Api::BaseController < ActionController::Base
   skip_before_action :verify_authenticity_token
   before_filter :set_headers
 
