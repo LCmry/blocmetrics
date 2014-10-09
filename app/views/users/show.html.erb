@@ -1,4 +1,5 @@
 <h3> Your Sites: </h3>
-<% @user.sites.each do |site| %>
-  <%= link_to site.name, [@user, site] %>
+<% @sites.each do |site| %>
+  <li><%= link_to site.name, [@user, site] %></li>
 <% end %>
+<%= link_to "New Site", new_user_site_path(@user, @site) %>

@@ -10,7 +10,7 @@ class SitesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @site = Site.new(site_params)
+    @site = current_user.sites.build(site_params)
     if @site.save
       flash[:notice] = "Site has been added."
       redirect_to [@user, @site]
@@ -21,6 +21,15 @@ class SitesController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    @site = Site.find(params[:id])
+    if @site.destroy
+      flash[:notice] = "Site has been deleted."
+      redirect_to @user
+    else
+      flash[:error] = "Problem deleting site."
+      redirect_to [@user, @site]
+    end
   end
 
   private
