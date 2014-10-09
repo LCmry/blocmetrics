@@ -1,4 +1,4 @@
 <h3> Your Sites: </h3>
-<% @sites.each do |site| %>
-  <%= link_to site.name, site %>
+<% @user.sites.each do |site| %>
+  <%= link_to site.name, [@user, site] %>
 <% end %>

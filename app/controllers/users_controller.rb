@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @sites = current_user.sites
+    @user = User.find(params[:id])
+    @sites = @user.sites
   end
 
 end

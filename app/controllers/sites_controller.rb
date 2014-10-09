@@ -15,7 +15,7 @@ class SitesController < ApplicationController
       flash[:notice] = "Site has been added."
       redirect_to [@user, @site]
     else
-      flash[:error] "Error saving the site."
+      flash[:error] = "Error saving the site."
       redirect_to :new
     end
   end

@@ -1,5 +1,5 @@
 <h1>Add a New Site</h1>
-<% form_for [@user, @site] do |f| %>
+<%= form_for [@user, @site] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, placeholder: "Enter site name" %>
   <%= f.submit "Add", class: 'btn btn-success' %>
