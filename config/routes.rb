@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-    resources :sites, only: [:show, :create, :destroy]
+    resources :sites, only: [:show, :new, :create, :destroy]
   end
 
   root to: "home#index"
