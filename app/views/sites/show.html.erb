@@ -1,3 +1,5 @@
 <h1><%= @site.name %></h1>
+Site Id: <%= @site.id %>
 <p><%= @site.events.count %></p>
-<%= link_to "Delete Site", @user, method: :delete %>
+<%= link_to "Delete Site", [@user, @site], method: :delete %>
+<%= link_to "Back", @user %>

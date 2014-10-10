@@ -1,6 +1,9 @@
 class SitesController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @site = Site.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def new
@@ -13,10 +16,10 @@ class SitesController < ApplicationController
     @site = current_user.sites.build(site_params)
     if @site.save
       flash[:notice] = "Site has been added."
-      redirect_to [@user, @site]
+      redirect_to @user
     else
-      flash[:error] = "Error saving the site."
-      redirect_to :new
+      flash[:alert] = "Error saving the site."
+      redirect_to new_user_site_path
     end
   end
 
@@ -27,7 +30,7 @@ class SitesController < ApplicationController
       flash[:notice] = "Site has been deleted."
       redirect_to @user
     else
-      flash[:error] = "Problem deleting site."
+      flash[:alert] = "Problem deleting site."
       redirect_to [@user, @site]
     end
   end
