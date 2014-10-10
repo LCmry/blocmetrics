@@ -1,5 +1,7 @@
+<% javascript_include_tag "Chart.js" %>
 <h1><%= @site.name %></h1>
 Site Id: <%= @site.id %>
 <p><%= @site.events.count %></p>
+<canvas id="lineChart" width="400" height="400"></canvas>
 <%= link_to "Delete Site", [@user, @site], method: :delete %>
 <%= link_to "Back", @user %>
