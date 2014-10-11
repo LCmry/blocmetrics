@@ -30,3 +30,5 @@ group :development do
 end
 
 gem 'devise'
+
+gem 'chart-js-rails'
