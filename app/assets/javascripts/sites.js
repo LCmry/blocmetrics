@@ -1,11 +1,10 @@
 $( document ).ready(function() {
-
 var ctx = document.getElementById("lineChart").getContext("2d");
 var data = {
-    labels: [1, 2, 3, 4],
+    labels: [],
     datasets: [
         {
-            label: "My First dataset",
+            label: "Site Views",
             fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
@@ -52,14 +51,14 @@ var options = {
     datasetStrokeWidth : 2,
 
     //Boolean - Whether to fill the dataset with a colour
-    datasetFill : true,
+    datasetFill : false,
 
     //String - A legend template
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
 };
 var myLineChart = new Chart(ctx).Line(data, options);
-var views;
-var dates;
-myLineChart.addData([views], dates);
+var view;
+var date;
+myLineChart.addData([view], date);
 });

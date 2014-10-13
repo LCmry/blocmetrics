@@ -1,9 +1,9 @@
 <%= javascript_include_tag 'sites' %>
-<%= javascript_tag do %>
-  views = '<%= @site.events.count %>';
-  dates = '<% @site.events.each do |event| %>
-    <%= event.created_at.to_date %>
-  <% end %>';
+<% @site.events.each do |event| %>
+  <%= javascript_tag do %>
+    view = '1';
+    date = '<%= event.created_at.to_date %>';
+  <% end %>
 <% end %>
 <h1><%= @site.name %></h1>
 Site Id: <%= @site.id %>
