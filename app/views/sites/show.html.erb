@@ -1,22 +1,24 @@
-<%= javascript_include_tag 'sites' %>
-<h1><%= @site.name %></h1>
-Site Id: <%= @site.id %>
-<p>
-  <%= javascript_tag do %>
-    var views = new Array();
-    var dates = new Array();
-    <% (Date.today - 7.days).upto(Date.today) do |day| %>
-        <% @event = @events.where(created_on: day).count %>
-        <% @day = day %>
-      view = <%= @event %>;
-      date = '<%= @day %>';
-      views.push(view);
-      dates.push(date);
-    <% end %>
-  <% end %>
-  <canvas id="lineChart" width="400" height="400"></canvas>
-</p>
-<p>
-  <%= link_to "Delete Site", [@user, @site], method: :delete %>
-  <%= link_to "Back", @user %>
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <%= javascript_include_tag 'sites' %>
+    <h1><%= @site.name %></h1>
+    Site Id: <%= @site.id %>
+    <p>
+      <%= javascript_tag do %>
+        var views = new Array();
+        var dates = new Array();
+        <% (Date.today - 7.days).upto(Date.today) do |day| %>
+            <% @event = @events.where(created_on: day).count %>
+            <% @day = day %>
+          view = <%= @event %>;
+          date = '<%= @day %>';
+          views.push(view);
+          dates.push(date);
+        <% end %>
+      <% end %>
+      <canvas id="lineChart" width="400" height="400"></canvas>
+    </p>
+    <p><%= link_to "Delete Site", [@user, @site], method: :delete %></p>
+    <p><%= link_to "Back", @user %></p>
+  </div>
+</div>
