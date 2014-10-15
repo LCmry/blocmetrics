@@ -5,7 +5,6 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
     @user = User.find(params[:user_id])
     @events = Event.where(site: @site)
-    
   end
 
   def new
