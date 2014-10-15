@@ -2,16 +2,20 @@
 <h1><%= @site.name %></h1>
 Site Id: <%= @site.id %>
 <p><%= @site.events.count %></p>
-<% @site.events.each do |event| %>
-  <%= javascript_tag do %>
-    view = '1';
-    date = <%= event.created_at.to_date %>;
-    var views = new Array();
+
+<%= javascript_tag do %>
+  var views = new Array();
+  var dates = new Array();
+  <% (Date.today - 7.days).upto(Date.today) do |day| %>
+      <% @event = @events.where(created_on: day).count %>
+      <% @day = day %>
+    view = <%= @event %>;
+    date = '<%= @day %>';
     views.push(view);
-    var dates = new Array();
     dates.push(date);
   <% end %>
 <% end %>
+
 <canvas id="lineChart" width="400" height="400"></canvas>
 <%= link_to "Delete Site", [@user, @site], method: :delete %>
 <%= link_to "Back", @user %>

@@ -6,7 +6,7 @@ $( document ).ready(function() {
     //var dates = new Array();
     //dates.push(<%= @dates %>.to_json);
     var data = {
-        labels: dates ,
+        labels: dates,
         datasets: [
             {
                 label: "Site Views",

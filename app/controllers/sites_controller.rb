@@ -5,11 +5,7 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
     @user = User.find(params[:user_id])
     @events = Event.where(site: @site)
-    @dates = @events.each do |event|
-      full_date = event.created_at.to_date
-      month = full_date.strftime("%B")
-      month
-    end
+    
   end
 
   def new
