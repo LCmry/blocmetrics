@@ -1,5 +1,11 @@
-<h3> Your Sites: </h3>
-<% @sites.each do |site| %>
-  <li><%= link_to site.name, [@user, site] %></li>
-<% end %>
-<%= link_to "New Site", new_user_site_path(@user, @site) %>
+<div class="row">
+  <div class="container">
+    <div class="col-md-4">
+      <h3> Your Sites: </h3>
+      <% @sites.each do |site| %>
+        <li><%= link_to site.name, [@user, site] %></li>
+      <% end %>
+      <%= link_to "New Site", new_user_site_path(@user, @site) %>
+    </div>
+  </div>
+</div>

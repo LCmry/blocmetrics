@@ -11,7 +11,7 @@
       <ul class="nav nav-tabs">
         <% if current_user %>
           <li><%= link_to "Blocmetrics", root_path %></li>
-          <li><%= link_to "Dashboard", @user %></li>
+          <li><%= link_to "Dashboard", user_path(current_user) %></li>
           <li class="pull-right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Home", root_path %></li>
