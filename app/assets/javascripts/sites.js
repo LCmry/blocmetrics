@@ -1,26 +1,21 @@
 $( document ).ready(function() {
-    var ctx = document.getElementById("lineChart").getContext("2d");
-    //var views = new Array();
-    //console.log(<%= @events %>);
-    //views.push(<%= @events %>.to_json);
-    //var dates = new Array();
-    //dates.push(<%= @dates %>.to_json);
-    var data = {
-        labels: dates,
-        datasets: [
-            {
-                label: "Site Views",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: views
-            }
-        ]
-    };
-    var options = {
+  var ctx = document.getElementById("lineChart").getContext("2d");
+  var data = {
+    labels: window.dates,
+    datasets: [
+      {
+        label: "Site Views",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: window.views
+      }
+    ]
+  };
+  var options = {
 
         ///Boolean - Whether grid lines are shown across the chart
         scaleShowGridLines : true,
@@ -58,10 +53,6 @@ $( document ).ready(function() {
         //Boolean - Whether to fill the dataset with a colour
         datasetFill : false,
 
-        //String - A legend template
-        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-    };
-    var myLineChart = new Chart(ctx).Line(data, options);
-    //myLineChart.addData(views, dates);
+  };
+  var myLineChart = new Chart(ctx).Line(data, options);
 });
