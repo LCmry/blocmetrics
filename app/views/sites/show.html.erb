@@ -1,0 +1,19 @@
+<h1 class="text-center"><%= @site.name %></br>
+  <small> Site Id: <%= @site.id %></small>
+</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h4 class="text-center">Site Views in the Past Week</h4>
+        <%= javascript_tag "var views = #{@views.to_json}" %>
+        <%= javascript_tag "var dates = #{@dates.to_json}" %>
+        <canvas class="col-md-8 col-md-offset-2" id="lineChart" width="500" height="400"></canvas>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row text-center">
+      <p><%= link_to "Delete Site", [@user, @site], method: :delete %></p>
+      <p><%= link_to "Back", @user %></p>
+    </div>
+  </div>
+</div>
