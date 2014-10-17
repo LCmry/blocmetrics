@@ -1,10 +1,18 @@
 class SitesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def show
     @site = Site.find(params[:id])
     @user = User.find(params[:user_id])
     @events = Event.where(site: @site)
+
+    @views = []
+    @dates = []
+    (Date.today - 7.days).upto(Date.today) do |day|
+      view = @events.where(created_on: day).count
+      @views << view
+      @dates << day
+    end
   end
 
   def new

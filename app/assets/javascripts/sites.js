@@ -1,37 +1,21 @@
 $( document ).ready(function() {
-	var ctx1 = document.getElementById("lineChart1").getContext("2d");
-	var data1 = {
-		labels: dates1,
-		datasets: [
-			{
-				label: "Site Views",
-				fillColor: "rgba(151,187,205,0.2)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
+  var ctx = document.getElementById("lineChart").getContext("2d");
+  var data = {
+    labels: window.dates,
+    datasets: [
+      {
+        label: "Site Views",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(151,187,205,1)",
-				data: views1
-			}
-		]
-	};
-	var ctx2 = document.getElementById("lineChart2").getContext("2d");
-	var data2 = {
-		labels: dates2,
-		datasets: [
-			{
-				label: "Site Views",
-				fillColor: "rgba(151,187,205,0.2)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(151,187,205,1)",
-				data: views2
-			}
-		]
-	};
-	var options = {
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: window.views
+      }
+    ]
+  };
+  var options = {
 
 		///Boolean - Whether grid lines are shown across the chart
 		scaleShowGridLines : true,
@@ -68,11 +52,6 @@ $( document ).ready(function() {
 
 		//Boolean - Whether to fill the dataset with a colour
 		datasetFill : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-	};
-	var myLineChart1 = new Chart(ctx1).Line(data1, options);
-	var myLineChart2 = new Chart(ctx2).Line(data2, options);
+  };
+  var myLineChart = new Chart(ctx).Line(data, options);
 });

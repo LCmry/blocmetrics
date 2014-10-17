@@ -1,44 +1,13 @@
-<%= javascript_include_tag 'sites' %>
 <h1 class="text-center"><%= @site.name %></br>
-<small> Site Id: <%= @site.id %></small>
+  <small> Site Id: <%= @site.id %></small>
 </h1>
 <div class="container">
   <div class="row">
-    <div class="col-md-4 col-md-offset-1">
-      <p>
+    <div class="col-md-8 col-md-offset-2">
         <h4 class="text-center">Site Views in the Past Week</h4>
-        <%= javascript_tag do %>
-          var views1 = new Array();
-          var dates1 = new Array();
-          <% (Date.today - 7.days).upto(Date.today) do |day| %>
-              <% @event = @events.where(created_on: day).count %>
-              <% @day = day.strftime("%b %e") %>
-            view1 = <%= @event %>;
-            date1 = '<%= @day %>';
-            views1.push(view1);
-            dates1.push(date1);
-          <% end %>
-        <% end %>
-        <canvas id="lineChart1" width="400" height="400"></canvas>
-      </p>
-    </div>
-    <div class="col-md-5 col-md-offset-1">
-      <p>
-        <h4 class="text-center">Site Views in the Past Month</h4>
-        <%= javascript_tag do %>
-          var views2 = new Array();
-          var dates2 = new Array();
-          <% (Date.today - 1.month).upto(Date.today) do |day| %>
-              <% @event = @events.where(created_on: day).count %>
-              <% @day = day.strftime("%b %e") %>
-            view2 = <%= @event %>;
-            date2 = '<%= @day %>';
-            views2.push(view2);
-            dates2.push(date2);
-          <% end %>
-        <% end %>
-        <canvas id="lineChart2" width="500" height="400"></canvas>
-      </p>
+        <%= javascript_tag "var views = #{@views.to_json}" %>
+        <%= javascript_tag "var dates = #{@dates.to_json}" %>
+        <canvas class="col-md-8 col-md-offset-2" id="lineChart" width="500" height="400"></canvas>
     </div>
   </div>
   <div class="container">
