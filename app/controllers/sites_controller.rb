@@ -11,7 +11,7 @@ class SitesController < ApplicationController
     (Date.today - 7.days).upto(Date.today) do |day|
       view = @events.where(created_on: day).count
       @views << view
-      @dates << day
+      @dates << day.strftime("%b %e")
     end
   end
 
